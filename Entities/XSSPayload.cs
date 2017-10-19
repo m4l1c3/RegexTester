@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace RegexTester.Entities
 {
-  public class XSSPayloads : IPayload
+  public class XSSPayload : IPayload
   {
-    public IList<string> Payloads { get; set; } = new List<string>();
+    public string Payload { get; set; }
   }
 }

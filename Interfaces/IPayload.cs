@@ -4,6 +4,6 @@ namespace RegexTester.Interfaces
 {
   public interface IPayload
   {
-    IList<string> Payloads { get; set; }
+    string Payload { get; set; }
   }
 }
