@@ -41,6 +41,10 @@ namespace RegexTester
             IList<IPayload> payloads;
             if(!PayloadContainer.Payloads.TryGetValue(TypesToValidate.XSS, out payloads))
             {
+                PayloadContainer.Payloads.Add(TypesToValidate.XSS, payloads);
+            }
+            if(!payloads.Any())
+            {
                 payloads.Add(new XSSPayload() { Payload = "javascript://'/</title></style></textarea></script>--><p' onclick=alert()//>*/alert()/*"});
                 payloads.Add(new XSSPayload() { Payload = "javascript://--></script></title></style>'/</textarea>*/<alert()/*' onclick=alert()//>a"});
                 payloads.Add(new XSSPayload() { Payload = "javascript://</title>'/</script></style></textarea/-->*/<alert()/*' onclick=alert()//>/"});
@@ -721,7 +725,8 @@ namespace RegexTester
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write(sanitized);
                 Console.WriteLine("");
-            } else
+            }
+            else
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(input + ":" + sanitized);
